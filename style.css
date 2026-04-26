@@ -1,32 +1,291 @@
-body {
-  font-family: 'Poppins', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Unbounded:wght@400;700;900&display=swap');
+
+:root {
+  --primary-gold: #FFD400;
+  --bg-dark: #05080f;
+  --bg-darker: #020308;
+  --text-light: #ffffff;
+  --text-muted: #9ca3af;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-hover: rgba(255, 255, 255, 0.1);
+  
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-.hero {
-  background: linear-gradient(to right, #004d40, #00796b);
-  color: white;
-  text-align: center;
-  padding: 80px 20px;
+h1, h2, h3, h4, h5, h6, .brand-logo {
+  font-family: 'Unbounded', sans-serif;
+  text-transform: uppercase;
 }
 
-.hero .btn {
-  background: #ff9800;
-  color: white;
-  padding: 10px 20px;
+/* Utilities */
+.text-gold { color: var(--primary-gold); }
+.text-center { text-align: center; }
+.section-padding { padding: 100px 5%; }
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Navbar */
+.navbar-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  border-radius: 50px;
+  transition: var(--transition-smooth);
+}
+
+.brand-logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
   text-decoration: none;
-  border-radius: 5px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-section {
-  padding: 40px 20px;
+.brand-logo span {
+  color: var(--primary-gold);
 }
 
-footer {
-  background: #333;
-  color: white;
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--primary-gold);
+}
+
+/* Button */
+.btn-primary {
+  background: var(--primary-gold);
+  color: var(--bg-darker);
+  font-weight: 700;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition-smooth);
+  display: inline-block;
+  border: 2px solid var(--primary-gold);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--primary-gold);
+  box-shadow: 0 0 20px rgba(255, 212, 0, 0.4);
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(255,212,0,0.15) 0%, rgba(5,8,15,0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+/* Sections */
+.section-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* About Section */
+#about {
+  background-color: var(--bg-darker);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* Events Grid */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-card {
+  border-radius: 20px;
+  padding: 30px;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-gold);
+  background: var(--glass-hover);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.event-date {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--primary-gold);
+  color: var(--bg-darker);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.event-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.event-card p {
+  color: var(--text-muted);
+}
+
+/* Admin Section Placeholder */
+#admin {
+  background: linear-gradient(135deg, rgba(255,212,0,0.1), rgba(5,8,15,1));
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.admin-box {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 50px 20px;
+  border-top: 1px solid var(--glass-border);
+  background: var(--bg-darker);
+}
+
+.footer-socials {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-socials a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: var(--transition-smooth);
+}
+
+.footer-socials a:hover {
+  color: var(--primary-gold);
+}
+
+/* Scroll Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: var(--transition-smooth);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* In a real app, you'd add a hamburger menu */
+  }
 }

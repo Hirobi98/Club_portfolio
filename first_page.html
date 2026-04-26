@@ -3,51 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spectrum KUET Portfolio</title>
+  <title>Spectrum | KUET</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar-container glass">
+    <a href="#" class="brand-logo">
+      <!-- Simple CSS logo representation -->
+      <div style="width: 30px; height: 30px; border-radius: 50%; background: var(--primary-gold); display: flex; align-items: center; justify-content: center; color: var(--bg-dark); font-size: 1rem;">S</div>
+      SPECT<span>RUM</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#admin">Admin Login</a></li>
+    </ul>
+  </nav>
+
   <!-- Hero Section -->
-  <header class="hero">
-    <h1>Spectrum KUET</h1>
-    <p>Premier Professional Skill Development Club</p>
-    <a href="#about" class="btn">Learn More</a>
+  <header id="home" class="hero">
+    <h1 class="reveal">Spectrum</h1>
+    <p class="reveal">The premier professional skill development club at KUET. Bridging the gap between academic theory and industry-ready competence.</p>
+    <a href="#events" class="btn-primary reveal">Discover Events</a>
   </header>
 
   <!-- About Section -->
-  <section id="about">
-    <h2>About Spectrum</h2>
-    <p>
-      Spectrum, the premier professional skill development club at KUET,
-      serves as a vital bridge between academic theory and industry-ready
-      competence. As the dedicated club partner and host of the Hult Prize,
-      Spectrum cultivates a culture of social entrepreneurship on campus.
-    </p>
+  <section id="about" class="section-padding">
+    <h2 class="section-title text-gold reveal">About Us</h2>
+    <div class="about-content reveal">
+      <p>
+        Spectrum serves as a vital bridge between academic theory and industry-ready competence. As the dedicated club partner and host of the Hult Prize, we cultivate a culture of social entrepreneurship on campus. Our mission is to empower students with the skills they need to excel in the professional world.
+      </p>
+    </div>
   </section>
 
   <!-- Events Section -->
-  <section id="events">
-    <h2>Flagship Events</h2>
-    <ul>
-      <li>JobSpecs 2025 – KUET’s first national job fair</li>
-      <li>Hult Prize Campus Round – Grooming sessions, mentorship workshops, Grand Finale</li>
-    </ul>
+  <section id="events" class="section-padding">
+    <h2 class="section-title reveal">Flagship <span class="text-gold">Events</span></h2>
+    <div class="events-grid">
+      <!-- Event 1 -->
+      <div class="event-card glass reveal">
+        <span class="event-date">Jan 12-13, 2025</span>
+        <h3 class="text-gold">JobSpecs 2025</h3>
+        <p>KUET’s first national job fair bringing top companies to campus for direct recruitment and networking.</p>
+      </div>
+      <!-- Event 2 -->
+      <div class="event-card glass reveal">
+        <span class="event-date">May 03, 2024</span>
+        <h3 class="text-gold">CaseSpecs 3.0</h3>
+        <p>An inter-university case competition designed to challenge students with real-world business problems.</p>
+      </div>
+      <!-- Event 3 -->
+      <div class="event-card glass reveal">
+        <span class="event-date">Feb 28, 2025</span>
+        <h3 class="text-gold">The Hult Prize</h3>
+        <p>KUET On Campus Round. Grooming sessions, mentorship workshops, and the Grand Finale for social entrepreneurship.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Impact Section -->
-  <section id="impact">
-    <h2>Impact</h2>
-    <p>
-      Spectrum has supported hundreds of startups and helped KUET teams
-      secure top positions in international regional finals.
-    </p>
+  <!-- Admin Login Section Placeholder -->
+  <section id="admin" class="section-padding">
+    <h2 class="section-title reveal">Admin <span class="text-gold">Portal</span></h2>
+    <div class="admin-box glass reveal">
+      <h3 style="margin-bottom: 20px;">Restricted Access</h3>
+      <p style="color: var(--text-muted); margin-bottom: 30px;">This area is reserved for club administrators only. Login functionality will be integrated here.</p>
+      <a href="#" class="btn-primary">Go to Login</a>
+    </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Footer -->
   <footer>
-    <h2>Contact Us</h2>
-    <p>Email: spectrum@kuet.edu</p>
-    <p>Follow us on social media</p>
+    <h2 class="brand-logo" style="justify-content: center; margin-bottom: 15px;">SPECT<span>RUM</span></h2>
+    <p style="color: var(--text-muted);">Stay ahead of the curve.</p>
+    <div class="footer-socials">
+      <a href="#">Facebook</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 20px;">&copy; 2025 Spectrum KUET. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
