@@ -11,32 +11,35 @@
   <!-- Navigation Bar -->
   <nav class="navbar-container glass">
     <a href="#" class="brand-logo">
-      <!-- Simple CSS logo representation -->
-      <div style="width: 30px; height: 30px; border-radius: 50%; background: var(--primary-gold); display: flex; align-items: center; justify-content: center; color: var(--bg-dark); font-size: 1rem;">S</div>
-      SPECT<span>RUM</span>
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width: 40px; height: 40px; object-fit: contain; border-radius: 50%;">
+      SPECTRUM
     </a>
     <ul class="nav-links">
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#events">Events</a></li>
+      <li><a href="#opportunities">Opportunities</a></li>
+      <li><a href="#achievements">Achievements</a></li>
       <li><a href="#admin">Admin Login</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
   <header id="home" class="hero">
-    <h1 class="reveal">Spectrum</h1>
-    <p class="reveal">The premier professional skill development club at KUET. Bridging the gap between academic theory and industry-ready competence.</p>
+    <h1 class="reveal">SPECTRUM</h1>
+    <p class="reveal">Spectrum is a professional skill development club of KUET. We bridge the gap between academic theory and industry-ready competence, preparing you for the corporate world.</p>
     <a href="#events" class="btn-primary reveal">Discover Events</a>
   </header>
 
   <!-- About Section -->
   <section id="about" class="section-padding">
     <h2 class="section-title text-gold reveal">About Us</h2>
-    <div class="about-content reveal">
+    <div class="about-content reveal" style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
       <p>
         Spectrum serves as a vital bridge between academic theory and industry-ready competence. As the dedicated club partner and host of the Hult Prize, we cultivate a culture of social entrepreneurship on campus. Our mission is to empower students with the skills they need to excel in the professional world.
       </p>
+      <!-- KUET Placeholder Image -->
+      <img src="https://via.placeholder.com/800x400/05080f/FFD400?text=KUET+Campus+Image" alt="KUET Campus" style="width: 100%; max-width: 800px; border-radius: 20px; border: 1px solid var(--glass-border);">
     </div>
   </section>
 
@@ -65,6 +68,37 @@
     </div>
   </section>
 
+  <!-- Opportunities Section -->
+  <section id="opportunities" class="section-padding" style="background-color: var(--bg-darker);">
+    <h2 class="section-title reveal">Student <span class="text-gold">Opportunities</span></h2>
+    <div class="events-grid">
+      <div class="event-card glass reveal">
+        <h3 class="text-gold">Skill Development Workshops</h3>
+        <p>We offer specialized grooming sessions and workshops focusing on communication, leadership, and technical skills needed in the corporate sector.</p>
+      </div>
+      <div class="event-card glass reveal">
+        <h3 class="text-gold">Case Competitions</h3>
+        <p>Participate in intra and inter-university case competitions to challenge your analytical and problem-solving skills with real-world business scenarios.</p>
+      </div>
+      <div class="event-card glass reveal">
+        <h3 class="text-gold">Job Fairs & Networking</h3>
+        <p>Connect directly with top companies, submit your resumes, and sit for interviews right on the KUET campus during our flagship job fairs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="section-padding">
+    <h2 class="section-title reveal">Our <span class="text-gold">Achievements</span></h2>
+    <div class="about-content reveal">
+      <p style="font-size: 1.1rem; text-align: left;">
+        <strong class="text-gold">★ Hult Prize Success:</strong> Successfully hosted multiple on-campus rounds, leading to KUET teams participating in regional and global summits.<br><br>
+        <strong class="text-gold">★ JobSpecs Excellence:</strong> Facilitated direct recruitment of hundreds of students by partnering with top multinational and local companies.<br><br>
+        <strong class="text-gold">★ Empowering Startups:</strong> Mentored and guided numerous student-led startups to secure funding and recognition on national platforms.
+      </p>
+    </div>
+  </section>
+
   <!-- Admin Login Section Placeholder -->
   <section id="admin" class="section-padding">
     <h2 class="section-title reveal">Admin <span class="text-gold">Portal</span></h2>
@@ -77,7 +111,10 @@
 
   <!-- Footer -->
   <footer>
-    <h2 class="brand-logo" style="justify-content: center; margin-bottom: 15px;">SPECT<span>RUM</span></h2>
+    <h2 class="brand-logo" style="justify-content: center; margin-bottom: 15px;">
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width: 30px; height: 30px; object-fit: contain; border-radius: 50%;">
+      SPECTRUM
+    </h2>
     <p style="color: var(--text-muted);">Stay ahead of the curve.</p>
     <div class="footer-socials">
       <a href="#">Facebook</a>
