@@ -25,6 +25,7 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
+  background: url('hero-bg.jpg') center center / cover no-repeat fixed;
   background-color: var(--bg-dark);
   color: var(--text-light);
   line-height: 1.6;
@@ -129,38 +130,53 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
+  align-items: flex-end;
+  text-align: right;
   position: relative;
   overflow: hidden;
+  padding: 0 8% 0 0;
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, rgba(255,212,0,0.15) 0%, rgba(5,8,15,0) 70%);
-  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 8, 15, 0.7) 0%,
+    rgba(5, 8, 15, 0.6) 40%,
+    rgba(5, 8, 15, 0.8) 100%
+  );
+  z-index: 0;
   pointer-events: none;
 }
 
+.hero h1,
+.hero p,
+.hero .btn-primary {
+  position: relative;
+  z-index: 1;
+}
+
 .hero h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 900;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   line-height: 1.1;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
 }
 
 .hero p {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  color: var(--text-muted);
-  max-width: 600px;
-  margin-bottom: 40px;
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  color: #e0e0e0;
+  max-width: 450px;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
 }
 
 /* Sections */
@@ -172,7 +188,7 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
 
 /* About Section */
 #about {
-  background-color: var(--bg-darker);
+  background-color: rgba(2, 3, 8, 0.88);
 }
 
 .about-content {
@@ -230,9 +246,18 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
   color: var(--text-muted);
 }
 
+/* Section backgrounds - slightly transparent to let bg image show through */
+#events {
+  background-color: rgba(5, 8, 15, 0.9);
+}
+
+#opportunities {
+  background-color: rgba(2, 3, 8, 0.88);
+}
+
 /* Admin Section Placeholder */
 #admin {
-  background: linear-gradient(135deg, rgba(255,212,0,0.1), rgba(5,8,15,1));
+  background: linear-gradient(135deg, rgba(255,212,0,0.08), rgba(5,8,15,0.9));
   border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
 }
@@ -250,7 +275,7 @@ footer {
   text-align: center;
   padding: 50px 20px;
   border-top: 1px solid var(--glass-border);
-  background: var(--bg-darker);
+  background: rgba(2, 3, 8, 0.92);
 }
 
 .footer-socials {

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opportunities | Spectrum KUET</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Page-specific styles */
+    .opportunities-hero {
+      padding: 140px 5% 60px;
+      text-align: center;
+      position: relative;
+      background-color: rgba(5, 8, 15, 0.85);
+    }
+
+    .opportunities-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 15px;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .opportunities-hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .opp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    .opp-card {
+      border-radius: 20px;
+      padding: 35px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .opp-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary-gold);
+      background: var(--glass-hover);
+      box-shadow: 0 10px 40px rgba(255, 212, 0, 0.1);
+    }
+
+    .opp-card .opp-tag {
+      display: inline-block;
+      background: var(--primary-gold);
+      color: var(--bg-darker);
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 4px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .opp-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: var(--primary-gold);
+    }
+
+    .opp-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .opp-card .partner-label {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: rgba(255, 212, 0, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .opp-section {
+      padding: 60px 0 100px;
+      background-color: rgba(5, 8, 15, 0.88);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary-gold);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: var(--transition-smooth);
+      margin-top: 30px;
+    }
+
+    .back-link:hover {
+      color: #fff;
+      gap: 12px;
+    }
+
+    .back-link::before {
+      content: '←';
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar-container glass">
+    <a href="first_page.html" class="brand-logo">
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width: 40px; height: 40px; object-fit: contain; border-radius: 50%;">
+      SPECTRUM
+    </a>
+    <ul class="nav-links">
+      <li><a href="first_page.html#home">Home</a></li>
+      <li><a href="first_page.html#about">About</a></li>
+      <li><a href="first_page.html#events">Events</a></li>
+      <li><a href="first_page.html#opportunities" class="active">Opportunities</a></li>
+      <li><a href="first_page.html#achievements">Achievements</a></li>
+      <li><a href="first_page.html#admin">Admin Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="opportunities-hero">
+    <h1 class="reveal">All <span class="text-gold">Opportunities</span></h1>
+    <p class="reveal">Explore every collaboration, workshop, and challenge that Spectrum has brought to KUET — empowering students through real-world industry partnerships.</p>
+  </section>
+
+  <!-- Opportunities Grid -->
+  <section class="opp-section">
+    <div class="opp-grid">
+
+      <!-- Card 1 -->
+      <div class="opp-card glass reveal">
+        <span class="opp-tag">Workshop</span>
+        <h3>Unilever Career Collaboration</h3>
+        <p>A career-focused workshop in collaboration with Unilever, providing students with hands-on insights into corporate career paths, FMCG industry dynamics, and essential professional skills to succeed in top-tier organizations.</p>
+        <div class="partner-label">Partner: Unilever</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="opp-card glass reveal">
+        <span class="opp-tag">Challenge</span>
+        <h3>Needle Innovation Challenge Session</h3>
+        <p>An innovation-driven challenge session that pushed students to think outside the box. Participants tackled real-world problems with creative solutions, honing their critical thinking and pitching abilities under competitive conditions.</p>
+        <div class="partner-label">Innovation Challenge</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="opp-card glass reveal">
+        <span class="opp-tag">Workshop</span>
+        <h3>Nestlé Bangladesh Collaboration</h3>
+        <p>A collaborative workshop with Nestlé Bangladesh, offering students an inside look at supply chain management, brand strategy, and career opportunities within one of the world's largest food and beverage companies.</p>
+        <div class="partner-label">Partner: Nestlé Bangladesh</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="opp-card glass reveal">
+        <span class="opp-tag">Road Show</span>
+        <h3>Over the Wall S4 Road Show by Marico</h3>
+        <p>Marico's flagship "Over the Wall" Season 4 road show came to KUET through Spectrum. Students participated in interactive sessions covering leadership, innovation, and career growth within the FMCG sector.</p>
+        <div class="partner-label">Partner: Marico</div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="opp-card glass reveal">
+        <span class="opp-tag">Orientation</span>
+        <h3>Y-E-S Award Orientation</h3>
+        <p>The Young Entrepreneurs & Students (Y-E-S) Award orientation session introduced students to entrepreneurship opportunities, award criteria, and mentorship programs designed to nurture the next generation of business leaders.</p>
+        <div class="partner-label">Entrepreneurship Award</div>
+      </div>
+
+      <!-- Card 6 - from main page -->
+      <div class="opp-card glass reveal">
+        <span class="opp-tag">Ongoing</span>
+        <h3>Skill Development Workshops</h3>
+        <p>Specialized grooming sessions and workshops focusing on communication, leadership, and technical skills needed to thrive in the corporate sector and beyond.</p>
+        <div class="partner-label">Spectrum Initiative</div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+      <a href="first_page.html#opportunities" class="back-link">Back to Home</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <h2 class="brand-logo" style="justify-content: center; margin-bottom: 15px;">
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width: 30px; height: 30px; object-fit: contain; border-radius: 50%;">
+      SPECTRUM
+    </h2>
+    <p style="color: var(--text-muted);">Stay ahead of the curve.</p>
+    <div class="footer-socials">
+      <a href="#">Facebook</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 20px;">&copy; 2025 Spectrum KUET. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
