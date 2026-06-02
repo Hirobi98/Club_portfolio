@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over the Wall S4 by Marico | Spectrum KUET</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .event-hero { min-height:60vh; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; position:relative; overflow:hidden; padding:60px 8%; background: linear-gradient(135deg, #1a150a 0%, #110d04 100%); }
+    .event-hero::before { content:''; position:absolute; top:0;left:0;width:100%;height:100%; background:linear-gradient(180deg,rgba(5,8,15,.2) 0%,rgba(5,8,15,.8) 70%,rgba(5,8,15,1) 100%); z-index:0; }
+    .event-hero * { position:relative; z-index:1; }
+    .event-hero .event-tag { display:inline-block; background:var(--primary-gold); color:var(--bg-darker); font-weight:700; font-size:.8rem; padding:6px 18px; border-radius:20px; text-transform:uppercase; letter-spacing:1px; margin-bottom:15px; }
+    .event-hero h1 { font-size:clamp(2rem,5vw,3.5rem); margin-bottom:10px; text-shadow:0 4px 30px rgba(0,0,0,.8); }
+    .event-hero .event-meta { color:var(--text-muted); font-size:1rem; display:flex; gap:25px; flex-wrap:wrap; }
+    .event-detail-section { padding:80px 8%; background-color:rgba(5,8,15,.95); }
+    .event-detail-content { max-width:900px; margin:0 auto; }
+    .event-detail-content h2 { font-size:1.8rem; margin-bottom:20px; color:var(--primary-gold); }
+    .event-detail-content p { color:var(--text-muted); font-size:1.05rem; line-height:1.9; margin-bottom:25px; }
+    .event-highlights { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:40px; }
+    .highlight-card { border-radius:16px; padding:30px; text-align:center; }
+    .highlight-card .highlight-number { font-family:'Unbounded',sans-serif; font-size:2.5rem; font-weight:900; color:var(--primary-gold); display:block; margin-bottom:8px; }
+    .highlight-card .highlight-label { color:var(--text-muted); font-size:.9rem; text-transform:uppercase; letter-spacing:1px; }
+    .event-timeline { margin-top:40px; border-left:2px solid var(--primary-gold); padding-left:30px; }
+    .timeline-item { margin-bottom:30px; position:relative; }
+    .timeline-item::before { content:''; position:absolute; left:-37px; top:5px; width:12px; height:12px; background:var(--primary-gold); border-radius:50%; }
+    .timeline-item h4 { color:var(--primary-gold); font-size:1rem; margin-bottom:5px; }
+    .timeline-item p { color:var(--text-muted); font-size:.95rem; margin-bottom:0; }
+    .back-link { display:inline-flex; align-items:center; gap:8px; color:var(--primary-gold); text-decoration:none; font-weight:600; font-size:.95rem; text-transform:uppercase; letter-spacing:1px; transition:var(--transition-smooth); margin-top:40px; }
+    .back-link:hover { color:#fff; gap:12px; }
+    .back-link::before { content:'←'; font-size:1.2rem; }
+  </style>
+</head>
+<body>
+  <nav class="navbar-container glass">
+    <a href="first_page.html" class="brand-logo">
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width:40px;height:40px;object-fit:contain;border-radius:50%;">
+      SPECTRUM
+    </a>
+    <ul class="nav-links">
+      <li><a href="first_page.html#home">Home</a></li>
+      <li><a href="first_page.html#about">About</a></li>
+      <li><a href="first_page.html#events">Events</a></li>
+      <li><a href="first_page.html#opportunities" class="active">Opportunities</a></li>
+      <li><a href="first_page.html#achievements">Achievements</a></li>
+      <li><a href="first_page.html#admin">Admin Login</a></li>
+    </ul>
+  </nav>
+
+  <section class="event-hero">
+    <span class="event-tag">Road Show</span>
+    <h1>Over the Wall <span class="text-gold">S4</span></h1>
+    <div class="event-meta">
+      <span>KUET Campus</span>
+      <span>Marico Road Show</span>
+      <span>Season 4</span>
+    </div>
+  </section>
+
+  <section class="event-detail-section">
+    <div class="event-detail-content">
+      <h2>About the Event</h2>
+      <p>Marico's flagship "Over the Wall" Season 4 road show came to KUET through Spectrum's partnership with one of South Asia's leading FMCG companies. The road show is Marico's premier campus engagement initiative, designed to connect with the brightest engineering and business talent across Bangladesh.</p>
+      <p>The KUET edition featured a full day of interactive sessions packed with leadership challenges, innovation sprints, and real-world business case discussions. Participants got a firsthand taste of Marico's dynamic corporate culture and learned directly from company leaders about building careers in FMCG.</p>
+
+      <div class="event-highlights">
+        <div class="highlight-card glass">
+          <span class="highlight-number">S4</span>
+          <span class="highlight-label">Season 4</span>
+        </div>
+        <div class="highlight-card glass">
+          <span class="highlight-number">Full</span>
+          <span class="highlight-label">Day Event</span>
+        </div>
+        <div class="highlight-card glass">
+          <span class="highlight-number">Live</span>
+          <span class="highlight-label">Challenges</span>
+        </div>
+        <div class="highlight-card glass">
+          <span class="highlight-number">FMCG</span>
+          <span class="highlight-label">Industry</span>
+        </div>
+      </div>
+
+      <h2 style="margin-top:60px;">Event Timeline</h2>
+      <div class="event-timeline">
+        <div class="timeline-item">
+          <h4>Morning — Marico Kickoff</h4>
+          <p>Welcome session by Marico leadership. Introduction to Marico's brand portfolio, regional presence, and the Over the Wall program's legacy across seasons.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Afternoon — Leadership & Innovation Sessions</h4>
+          <p>Interactive team challenges focused on leadership under pressure, creative problem-solving, and real FMCG business scenarios. Teams competed in structured rounds.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Closing — Career Growth Panel</h4>
+          <p>Panel discussion with Marico executives sharing personal career journeys and advice for students aspiring to join FMCG. Networking and closing ceremony.</p>
+        </div>
+      </div>
+
+      <a href="opportunities.html" class="back-link">Back to Opportunities</a>
+    </div>
+  </section>
+
+  <footer>
+    <h2 class="brand-logo" style="justify-content:center;margin-bottom:15px;">
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width:30px;height:30px;object-fit:contain;border-radius:50%;">
+      SPECTRUM
+    </h2>
+    <p style="color:var(--text-muted);">Stay ahead of the curve.</p>
+    <div class="footer-socials">
+      <a href="#">Facebook</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+    <p style="color:var(--text-muted);font-size:.8rem;margin-top:20px;">&copy; 2025 Spectrum KUET. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

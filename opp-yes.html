@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Y-E-S Award Orientation | Spectrum KUET</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .event-hero { min-height:60vh; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; position:relative; overflow:hidden; padding:60px 8%; background: linear-gradient(135deg, #0a1a1a 0%, #041010 100%); }
+    .event-hero::before { content:''; position:absolute; top:0;left:0;width:100%;height:100%; background:linear-gradient(180deg,rgba(5,8,15,.2) 0%,rgba(5,8,15,.8) 70%,rgba(5,8,15,1) 100%); z-index:0; }
+    .event-hero * { position:relative; z-index:1; }
+    .event-hero .event-tag { display:inline-block; background:var(--primary-gold); color:var(--bg-darker); font-weight:700; font-size:.8rem; padding:6px 18px; border-radius:20px; text-transform:uppercase; letter-spacing:1px; margin-bottom:15px; }
+    .event-hero h1 { font-size:clamp(2rem,5vw,3.5rem); margin-bottom:10px; text-shadow:0 4px 30px rgba(0,0,0,.8); }
+    .event-hero .event-meta { color:var(--text-muted); font-size:1rem; display:flex; gap:25px; flex-wrap:wrap; }
+    .event-detail-section { padding:80px 8%; background-color:rgba(5,8,15,.95); }
+    .event-detail-content { max-width:900px; margin:0 auto; }
+    .event-detail-content h2 { font-size:1.8rem; margin-bottom:20px; color:var(--primary-gold); }
+    .event-detail-content p { color:var(--text-muted); font-size:1.05rem; line-height:1.9; margin-bottom:25px; }
+    .event-highlights { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:40px; }
+    .highlight-card { border-radius:16px; padding:30px; text-align:center; }
+    .highlight-card .highlight-number { font-family:'Unbounded',sans-serif; font-size:2.5rem; font-weight:900; color:var(--primary-gold); display:block; margin-bottom:8px; }
+    .highlight-card .highlight-label { color:var(--text-muted); font-size:.9rem; text-transform:uppercase; letter-spacing:1px; }
+    .event-timeline { margin-top:40px; border-left:2px solid var(--primary-gold); padding-left:30px; }
+    .timeline-item { margin-bottom:30px; position:relative; }
+    .timeline-item::before { content:''; position:absolute; left:-37px; top:5px; width:12px; height:12px; background:var(--primary-gold); border-radius:50%; }
+    .timeline-item h4 { color:var(--primary-gold); font-size:1rem; margin-bottom:5px; }
+    .timeline-item p { color:var(--text-muted); font-size:.95rem; margin-bottom:0; }
+    .back-link { display:inline-flex; align-items:center; gap:8px; color:var(--primary-gold); text-decoration:none; font-weight:600; font-size:.95rem; text-transform:uppercase; letter-spacing:1px; transition:var(--transition-smooth); margin-top:40px; }
+    .back-link:hover { color:#fff; gap:12px; }
+    .back-link::before { content:'←'; font-size:1.2rem; }
+  </style>
+</head>
+<body>
+  <nav class="navbar-container glass">
+    <a href="first_page.html" class="brand-logo">
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width:40px;height:40px;object-fit:contain;border-radius:50%;">
+      SPECTRUM
+    </a>
+    <ul class="nav-links">
+      <li><a href="first_page.html#home">Home</a></li>
+      <li><a href="first_page.html#about">About</a></li>
+      <li><a href="first_page.html#events">Events</a></li>
+      <li><a href="first_page.html#opportunities" class="active">Opportunities</a></li>
+      <li><a href="first_page.html#achievements">Achievements</a></li>
+      <li><a href="first_page.html#admin">Admin Login</a></li>
+    </ul>
+  </nav>
+
+  <section class="event-hero">
+    <span class="event-tag">Orientation</span>
+    <h1>Y-E-S Award <span class="text-gold">Orientation</span></h1>
+    <div class="event-meta">
+      <span>KUET Campus</span>
+      <span>Entrepreneurship Award</span>
+    </div>
+  </section>
+
+  <section class="event-detail-section">
+    <div class="event-detail-content">
+      <h2>About the Orientation</h2>
+      <p>The Young Entrepreneurs & Students (Y-E-S) Award orientation session, facilitated by Spectrum at KUET, introduced students to one of Bangladesh's most prestigious entrepreneurship recognition programs. The session was designed to inspire and guide aspiring student entrepreneurs through the award process and beyond.</p>
+      <p>Participants learned about the award criteria, the application and evaluation process, and the comprehensive mentorship programs available to nominees and winners. The orientation highlighted success stories of past Y-E-S Award recipients, demonstrating the real-world impact the award has had on student-led ventures across the country.</p>
+
+      <div class="event-highlights">
+        <div class="highlight-card glass">
+          <span class="highlight-number">Y-E-S</span>
+          <span class="highlight-label">Award Program</span>
+        </div>
+        <div class="highlight-card glass">
+          <span class="highlight-number">Mentor</span>
+          <span class="highlight-label">Programs</span>
+        </div>
+        <div class="highlight-card glass">
+          <span class="highlight-number">Nation</span>
+          <span class="highlight-label">Wide Recognition</span>
+        </div>
+        <div class="highlight-card glass">
+          <span class="highlight-number">Fund</span>
+          <span class="highlight-label">ing Support</span>
+        </div>
+      </div>
+
+      <h2 style="margin-top:60px;">Session Breakdown</h2>
+      <div class="event-timeline">
+        <div class="timeline-item">
+          <h4>Introduction — Y-E-S Award Overview</h4>
+          <p>Detailed walkthrough of the Y-E-S Award — its history, purpose, categories, and the eligibility criteria for student participants.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Application Process Workshop</h4>
+          <p>Step-by-step guidance on the application procedure, documentation requirements, and how to present entrepreneurial ideas effectively for evaluation.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Mentorship & Support Programs</h4>
+          <p>Overview of the mentorship ecosystem available to Y-E-S participants — access to industry mentors, funding pathways, and growth accelerators for winning ventures.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Success Stories & Q&A</h4>
+          <p>Alumni entrepreneurs shared their journeys through the Y-E-S Award program and how it shaped their ventures. Open Q&A for interested participants.</p>
+        </div>
+      </div>
+
+      <a href="opportunities.html" class="back-link">Back to Opportunities</a>
+    </div>
+  </section>
+
+  <footer>
+    <h2 class="brand-logo" style="justify-content:center;margin-bottom:15px;">
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width:30px;height:30px;object-fit:contain;border-radius:50%;">
+      SPECTRUM
+    </h2>
+    <p style="color:var(--text-muted);">Stay ahead of the curve.</p>
+    <div class="footer-socials">
+      <a href="#">Facebook</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+    <p style="color:var(--text-muted);font-size:.8rem;margin-top:20px;">&copy; 2025 Spectrum KUET. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
