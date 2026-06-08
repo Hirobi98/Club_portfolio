@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($admin) {
                 // Direct Plain Text Matching (No hashing functions used)
                 if ($password === $admin['password']) {
+                    $_SESSION['admin_logged_in'] = true;
                     
                     $_SESSION['admin'] = $admin['username'];
                     
