@@ -1,0 +1,200 @@
+<?php
+require_once 'db.php';
+
+// 1. Fetch live events from database
+try {
+    $stmtEvents = $pdo->query("SELECT * FROM events ORDER BY created_at DESC");
+    $db_events = $stmtEvents->fetchAll();
+} catch (Exception $e) {
+    $db_events = []; // Fallback if table doesn't exist yet
+}
+
+// 2. Fetch live opportunities from database
+try {
+    $stmtOpps = $pdo->query("SELECT * FROM opportunities ORDER BY created_at DESC LIMIT 3");
+    $db_opportunities = $stmtOpps->fetchAll();
+} catch (Exception $e) {
+    $db_opportunities = []; // Fallback if table doesn't exist yet
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectrum | KUET</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar-container glass">
+    <a href="#" class="brand-logo">
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width: 40px; height: 40px; object-fit: contain; border-radius: 50%;">
+      SPECTRUM
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#opportunities">Opportunities</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#admin">Admin Login</a></li>
+    </ul>
+  </nav>
+
+  <header id="home" class="hero">
+    <h1 class="reveal">SPECTRUM</h1>
+    <p class="reveal">Spectrum is a professional skill development club of KUET. We bridge the gap between academic theory and industry-ready competence, preparing you for the corporate world.</p>
+    <a href="#events" class="btn-primary reveal">Discover Events</a>
+  </header>
+
+  <section id="about" class="section-padding">
+    <h2 class="section-title text-gold reveal">About Us</h2>
+    <div class="about-content reveal" style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
+      <p>
+        Spectrum serves as a vital bridge between academic theory and industry-ready competence. As the dedicated club partner and host of the Hult Prize, we cultivate a culture of social entrepreneurship on campus. Our mission is to empower students with the skills they need to excel in the professional world.
+      </p>
+      <img src="https://via.placeholder.com/800x400/05080f/FFD400?text=KUET+Campus+Image" alt="KUET Campus" style="width: 100%; max-width: 800px; border-radius: 20px; border: 1px solid var(--glass-border);">
+    </div>
+  </section>
+
+  <section id="events" class="section-padding">
+    <h2 class="section-title reveal">Flagship <span class="text-gold">Events</span></h2>
+    <div class="events-grid">
+      
+      <?php if (!empty($db_events)): ?>
+        <?php foreach ($db_events as $event): ?>
+          <a href="view-event.php?id=<?= $event['id']; ?>" class="event-card glass reveal">
+            <img src="uploads/<?= htmlspecialchars($event['cover_image']); ?>" alt="<?= htmlspecialchars($event['title']); ?>" class="event-card-image">
+            <div class="event-card-body">
+              <span class="event-date"><?= htmlspecialchars($event['tag']); ?></span>
+              <h3 class="text-gold"><?= htmlspecialchars($event['title']); ?></h3>
+              <p><?= htmlspecialchars($event['description']); ?></p>
+            </div>
+          </a>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <a href="event-jobspecs.html" class="event-card glass reveal">
+          <img src="jobspecs-cover.png" alt="JobSpecs 2025" class="event-card-image">
+          <div class="event-card-body">
+            <span class="event-date">Jan 12-13, 2025</span>
+            <h3 class="text-gold">JobSpecs 2025</h3>
+            <p>KUET's first national job fair bringing top companies to campus for direct recruitment and networking.</p>
+          </div>
+        </a>
+        <a href="event-casespecs.html" class="event-card glass reveal">
+          <img src="casespecs-cover.png" alt="CaseSpecs 3.0" class="event-card-image">
+          <div class="event-card-body">
+            <span class="event-date">May 03, 2024</span>
+            <h3 class="text-gold">CaseSpecs 3.0</h3>
+            <p>An inter-university case competition designed to challenge students with real-world business problems.</p>
+          </div>
+        </a>
+        <a href="event-hultprize.html" class="event-card glass reveal">
+          <img src="hultprize-cover.png" alt="The Hult Prize" class="event-card-image">
+          <div class="event-card-body">
+            <span class="event-date">Feb 28, 2025</span>
+            <h3 class="text-gold">The Hult Prize</h3>
+            <p>KUET On Campus Round. Grooming sessions, mentorship workshops, and the Grand Finale for social entrepreneurship.</p>
+          </div>
+        </a>
+      <?php endif; ?>
+
+    </div>
+  </section>
+
+  <section id="opportunities" class="section-padding" style="background-color: var(--bg-darker);">
+    <h2 class="section-title reveal">Student <span class="text-gold">Opportunities</span></h2>
+    <div class="events-grid">
+
+      <?php if (!empty($db_opportunities)): ?>
+        <?php foreach ($db_opportunities as $opp): ?>
+          <a href="view-opportunity.php?id=<?= $opp['id']; ?>" class="event-card glass reveal">
+            <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%); display:flex; align-items:center; justify-content:center; height:200px;">
+              <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;"><?= htmlspecialchars($opp['title']); ?></span>
+            </div>
+            <div class="event-card-body">
+              <span class="event-date"><?= htmlspecialchars($opp['date_info']); ?></span>
+              <h3 class="text-gold"><?= htmlspecialchars($opp['title']); ?></h3>
+              <p><?= htmlspecialchars($opp['description']); ?></p>
+            </div>
+          </a>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <a href="opportunities.html#unilever" class="event-card glass reveal">
+          <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a3a2a 0%, #0d2218 100%); display:flex; align-items:center; justify-content:center; height:200px;">
+            <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;">UNILEVER<br>CAREER COLLAB</span>
+          </div>
+          <div class="event-card-body">
+            <span class="event-date">Workshop</span>
+            <h3 class="text-gold">Unilever Career Collaboration</h3>
+            <p>Hands-on insights into corporate career paths, FMCG industry dynamics, and essential professional skills.</p>
+          </div>
+        </a>
+        <a href="opportunities.html#needle" class="event-card glass reveal">
+          <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%); display:flex; align-items:center; justify-content:center; height:200px;">
+            <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;">NEEDLE<br>INNOVATION</span>
+          </div>
+          <div class="event-card-body">
+            <span class="event-date">Challenge</span>
+            <h3 class="text-gold">Needle Innovation Challenge</h3>
+            <p>An innovation-driven challenge pushing students to tackle real-world problems with creative solutions.</p>
+          </div>
+        </a>
+        <a href="opportunities.html#nestle" class="event-card glass reveal">
+          <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a0a0a 0%, #100505 100%); display:flex; align-items:center; justify-content:center; height:200px;">
+            <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;">NESTLÉ<br>COLLABORATION</span>
+          </div>
+          <div class="event-card-body">
+            <span class="event-date">Workshop</span>
+            <h3 class="text-gold">Nestlé Bangladesh Collaboration</h3>
+            <p>Inside look at supply chain management, brand strategy, and career opportunities at Nestlé Bangladesh.</p>
+          </div>
+        </a>
+      <?php endif; ?>
+
+    </div>
+    <div style="text-align: center; margin-top: 40px;" class="reveal">
+      <a href="opportunities.html" class="btn-primary">View All Opportunities</a>
+    </div>
+  </section>
+
+  <section id="achievements" class="section-padding">
+    <h2 class="section-title reveal">Our <span class="text-gold">Achievements</span></h2>
+    <div class="about-content reveal">
+      <p style="font-size: 1.1rem; text-align: left;">
+        <strong class="text-gold">★ Hult Prize Success:</strong> Successfully hosted multiple on-campus rounds, leading to KUET teams participating in regional and global summits.<br><br>
+        <strong class="text-gold">★ JobSpecs Excellence:</strong> Facilitated direct recruitment of hundreds of students by partnering with top multinational and local companies.<br><br>
+        <strong class="text-gold">★ Empowering Startups:</strong> Mentored and guided numerous student-led startups to secure funding and recognition on national platforms.
+      </p>
+    </div>
+  </section>
+
+  <section id="admin" class="section-padding">
+    <h2 class="section-title reveal">Admin <span class="text-gold">Portal</span></h2>
+    <div class="admin-content reveal">
+      <span class="admin-icon">🔐</span>
+      <p>
+        This area is reserved for authorized Spectrum club administrators. Through this portal, admins can manage events, update opportunities, and publish new achievements. Login functionality will be integrated with secure authentication.
+      </p>
+      <a href="login.php" class="btn-primary">Go to Login</a>
+    </div>
+  </section>
+
+  <footer>
+    <h2 class="brand-logo" style="justify-content: center; margin-bottom: 15px;">
+      <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width: 30px; height: 30px; object-fit: contain; border-radius: 50%;">
+      SPECTRUM
+    </h2>
+    <p style="color: var(--text-muted);">Stay ahead of the curve.</p>
+    <div class="footer-socials">
+      <a href="#">Facebook</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 20px;">&copy; 2025 Spectrum KUET. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
