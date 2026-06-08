@@ -30,4 +30,4 @@ CREATE TABLE IF NOT EXISTS opportunities (
 );
 
 INSERT INTO admins (username, password) 
-VALUES ('admin', 'hashed_password_here');
+VALUES ('admin', 'spectrum22');
