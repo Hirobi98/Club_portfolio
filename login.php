@@ -72,17 +72,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
       <?php endif; ?>
 
-      <form action="login.php" method="POST" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
-        <div>
-          <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Username</label>
-          <input type="text" name="username" required style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: white;">
-        </div>
-        <div>
-          <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Password</label>
-          <input type="password" name="password" required style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: white;">
-        </div>
-        <button type="submit" class="btn-primary" style="margin-top: 10px; width: 100%; cursor: pointer;">Login</button>
-      </form>
+        <form action="login.php" method="POST" autocomplete="off" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
+    <div>
+        <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Username</label>
+        <input type="text" name="username" autocomplete="off" required style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: white;">
+    </div>
+    <div>
+        <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Password</label>
+        <input type="password" name="password" autocomplete="new-password" required style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: white;">
+    </div>
+    <button type="submit" class="btn-primary" style="margin-top: 10px; width: 100%; cursor: pointer;">Login</button>
+    </form>
     </div>
   </div>
 </body>
