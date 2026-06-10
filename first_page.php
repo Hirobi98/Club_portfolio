@@ -1,22 +1,3 @@
-<?php
-require_once 'db.php';
-
-// 1. Fetch live events from database
-try {
-    $stmtEvents = $pdo->query("SELECT * FROM events ORDER BY created_at DESC");
-    $db_events = $stmtEvents->fetchAll();
-} catch (Exception $e) {
-    $db_events = []; // Fallback if table doesn't exist yet
-}
-
-// 2. Fetch live opportunities from database
-try {
-    $stmtOpps = $pdo->query("SELECT * FROM opportunities ORDER BY created_at DESC LIMIT 3");
-    $db_opportunities = $stmtOpps->fetchAll();
-} catch (Exception $e) {
-    $db_opportunities = []; // Fallback if table doesn't exist yet
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,13 +19,13 @@ try {
       <li><a href="#events">Events</a></li>
       <li><a href="#opportunities">Opportunities</a></li>
       <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#admin">Admin Login</a></li>
+      <li><a href="login.php">Admin Login</a></li>
     </ul>
   </nav>
 
   <header id="home" class="hero">
-    <h1 class="reveal">SPECTRUM</h1>
-    <p class="reveal">Spectrum is a professional skill development club of KUET. We bridge the gap between academic theory and industry-ready competence, preparing you for the corporate world.</p>
+    <h1 class="reveal"><?= htmlspecialchars($settings['home_hero_title'] ?? 'SPECTRUM'); ?></h1>
+    <p class="reveal"><?= htmlspecialchars($settings['home_hero_subtitle'] ?? 'Spectrum is a professional skill development club of KUET. We bridge the gap between academic theory and industry-ready competence, preparing you for the corporate world.'); ?></p>
     <a href="#events" class="btn-primary reveal">Discover Events</a>
   </header>
 
@@ -52,16 +33,34 @@ try {
     <h2 class="section-title text-gold reveal">About Us</h2>
     <div class="about-content reveal" style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
       <p>
-        Spectrum serves as a vital bridge between academic theory and industry-ready competence. As the dedicated club partner and host of the Hult Prize, we cultivate a culture of social entrepreneurship on campus. Our mission is to empower students with the skills they need to excel in the professional world.
+        <?= htmlspecialchars($settings['about_description'] ?? 'Spectrum serves as a vital bridge between academic theory and industry-ready competence. As the dedicated club partner and host of the Hult Prize, we cultivate a culture of social entrepreneurship on campus. Our mission is to empower students with the skills they need to excel in the professional world.'); ?>
       </p>
       <img src="https://via.placeholder.com/800x400/05080f/FFD400?text=KUET+Campus+Image" alt="KUET Campus" style="width: 100%; max-width: 800px; border-radius: 20px; border: 1px solid var(--glass-border);">
     </div>
+
+    <!-- Stats Bar -->
+    <?php if (!empty($settings['achievements_count']) || !empty($settings['members_count'])): ?>
+    <div class="reveal" style="display: flex; justify-content: center; gap: 60px; margin-top: 50px; flex-wrap: wrap;">
+      <?php if (!empty($settings['achievements_count'])): ?>
+      <div style="text-align: center;">
+        <span class="text-gold" style="font-family:'Unbounded',sans-serif; font-size: 2rem; font-weight: 900; display: block;"><?= htmlspecialchars($settings['achievements_count']); ?></span>
+        <span style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;">Achievements</span>
+      </div>
+      <?php endif; ?>
+      <?php if (!empty($settings['members_count'])): ?>
+      <div style="text-align: center;">
+        <span class="text-gold" style="font-family:'Unbounded',sans-serif; font-size: 2rem; font-weight: 900; display: block;"><?= htmlspecialchars($settings['members_count']); ?></span>
+        <span style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;">Members</span>
+      </div>
+      <?php endif; ?>
+    </div>
+    <?php endif; ?>
   </section>
 
   <section id="events" class="section-padding">
     <h2 class="section-title reveal">Flagship <span class="text-gold">Events</span></h2>
     <div class="events-grid">
-      
+
       <?php if (!empty($db_events)): ?>
         <?php foreach ($db_events as $event): ?>
           <a href="view-event.php?id=<?= $event['id']; ?>" class="event-card glass reveal">
@@ -110,9 +109,13 @@ try {
       <?php if (!empty($db_opportunities)): ?>
         <?php foreach ($db_opportunities as $opp): ?>
           <a href="view-opportunity.php?id=<?= $opp['id']; ?>" class="event-card glass reveal">
-            <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%); display:flex; align-items:center; justify-content:center; height:200px;">
-              <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;"><?= htmlspecialchars($opp['title']); ?></span>
-            </div>
+            <?php if (!empty($opp['image'])): ?>
+              <img src="uploads/<?= htmlspecialchars($opp['image']); ?>" alt="<?= htmlspecialchars($opp['title']); ?>" class="event-card-image">
+            <?php else: ?>
+              <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%); display:flex; align-items:center; justify-content:center; height:200px;">
+                <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;"><?= htmlspecialchars($opp['title']); ?></span>
+              </div>
+            <?php endif; ?>
             <div class="event-card-body">
               <span class="event-date"><?= htmlspecialchars($opp['date_info']); ?></span>
               <h3 class="text-gold"><?= htmlspecialchars($opp['title']); ?></h3>
@@ -162,22 +165,20 @@ try {
   <section id="achievements" class="section-padding">
     <h2 class="section-title reveal">Our <span class="text-gold">Achievements</span></h2>
     <div class="about-content reveal">
-      <p style="font-size: 1.1rem; text-align: left;">
-        <strong class="text-gold">★ Hult Prize Success:</strong> Successfully hosted multiple on-campus rounds, leading to KUET teams participating in regional and global summits.<br><br>
-        <strong class="text-gold">★ JobSpecs Excellence:</strong> Facilitated direct recruitment of hundreds of students by partnering with top multinational and local companies.<br><br>
-        <strong class="text-gold">★ Empowering Startups:</strong> Mentored and guided numerous student-led startups to secure funding and recognition on national platforms.
-      </p>
-    </div>
-  </section>
-
-  <section id="admin" class="section-padding">
-    <h2 class="section-title reveal">Admin <span class="text-gold">Portal</span></h2>
-    <div class="admin-content reveal">
-      <span class="admin-icon">🔐</span>
-      <p>
-        This area is reserved for authorized Spectrum club administrators. Through this portal, admins can manage events, update opportunities, and publish new achievements. Login functionality will be integrated with secure authentication.
-      </p>
-      <a href="login.php" class="btn-primary">Go to Login</a>
+      <?php if (!empty($db_achievements)): ?>
+        <p style="font-size: 1.1rem; text-align: left;">
+          <?php foreach ($db_achievements as $i => $ach): ?>
+            <strong class="text-gold">★ <?= htmlspecialchars($ach['title']); ?>:</strong> <?= htmlspecialchars($ach['description']); ?>
+            <?php if ($i < count($db_achievements) - 1): ?><br><br><?php endif; ?>
+          <?php endforeach; ?>
+        </p>
+      <?php else: ?>
+        <p style="font-size: 1.1rem; text-align: left;">
+          <strong class="text-gold">★ Hult Prize Success:</strong> Successfully hosted multiple on-campus rounds, leading to KUET teams participating in regional and global summits.<br><br>
+          <strong class="text-gold">★ JobSpecs Excellence:</strong> Facilitated direct recruitment of hundreds of students by partnering with top multinational and local companies.<br><br>
+          <strong class="text-gold">★ Empowering Startups:</strong> Mentored and guided numerous student-led startups to secure funding and recognition on national platforms.
+        </p>
+      <?php endif; ?>
     </div>
   </section>
 
