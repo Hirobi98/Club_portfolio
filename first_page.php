@@ -195,9 +195,9 @@ if (!isset($settings)) {
     </h2>
     <p style="color: var(--text-muted);">Stay ahead of the curve.</p>
     <div class="footer-socials">
-      <a href="#">Facebook</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Instagram</a>
+      <a href="https://www.facebook.com/share/1H4jihbrnF/" target="_blank">Facebook</a>
+      <a href="https://www.linkedin.com/company/spectrum-professional-skill-development-club-of-kuet/" target="_blank">LinkedIn</a>
+      <a href="https://www.instagram.com/spectrum__kuet?igsh=dHd1bGl2dDEyM3di" target="_blank">Instagram</a>
     </div>
     <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 20px;">&copy; 2025 Spectrum KUET. All rights reserved.</p>
   </footer>
