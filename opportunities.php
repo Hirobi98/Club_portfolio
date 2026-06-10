@@ -75,6 +75,7 @@ try {
       <li><a href="first_page.php#events">Events</a></li>
       <li><a href="first_page.php#opportunities" class="active">Opportunities</a></li>
       <li><a href="first_page.php#achievements">Achievements</a></li>
+      <li><a href="login.php" style="color:var(--primary-gold);">Admin Login</a></li>
     </ul>
   </nav>
 

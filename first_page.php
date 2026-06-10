@@ -44,6 +44,9 @@ if (!isset($settings)) {
       <li><a href="#events">Events</a></li>
       <li><a href="#opportunities">Opportunities</a></li>
       <li><a href="#achievements">Achievements</a></li>
+      <?php if (empty($is_admin_preview)): ?>
+        <li><a href="login.php" style="color:var(--primary-gold);">Admin Login</a></li>
+      <?php endif; ?>
     </ul>
   </nav>
 
