@@ -37,7 +37,7 @@ try {
 }
 // Fetch member achievements
 try {
-    $stmtMem = $pdo->query("SELECT * FROM member_achievements ORDER BY created_at DESC");
+    $stmtMem = $pdo->query("SELECT * FROM member_achievements ORDER BY created_at DESC LIMIT 4");
     $db_member_achievements = $stmtMem->fetchAll();
 } catch (Exception $e) {
     $db_member_achievements = [];

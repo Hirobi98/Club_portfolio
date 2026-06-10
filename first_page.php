@@ -22,7 +22,7 @@ if (!isset($settings)) {
         $db_achievements = $pdo->query("SELECT * FROM achievements ORDER BY display_order ASC, created_at DESC")->fetchAll();
     } catch (Exception $e) { $db_achievements = []; }
     try {
-        $db_member_achievements = $pdo->query("SELECT * FROM member_achievements ORDER BY created_at DESC")->fetchAll();
+        $db_member_achievements = $pdo->query("SELECT * FROM member_achievements ORDER BY created_at DESC LIMIT 4")->fetchAll();
     } catch (Exception $e) { $db_member_achievements = []; }
 }
 ?>
@@ -65,7 +65,7 @@ if (!isset($settings)) {
       <p>
         <?= htmlspecialchars($settings['about_description'] ?? 'Spectrum serves as a vital bridge between academic theory and industry-ready competence. As the dedicated club partner and host of the Hult Prize, we cultivate a culture of social entrepreneurship on campus. Our mission is to empower students with the skills they need to excel in the professional world.'); ?>
       </p>
-      <img src="https://via.placeholder.com/800x400/05080f/FFD400?text=KUET+Campus+Image" alt="KUET Campus" style="width: 100%; max-width: 800px; border-radius: 20px; border: 1px solid var(--glass-border);">
+      <img src="KUET_MAIN.jpg" alt="KUET Campus" style="width: 100%; max-width: 800px; border-radius: 20px; border: 1px solid var(--glass-border);">
     </div>
 
     <!-- Stats Bar -->
@@ -180,6 +180,9 @@ if (!isset($settings)) {
           </div>
         </div>
       <?php endforeach; ?>
+    </div>
+    <div style="text-align: center; margin-top: 40px;" class="reveal">
+      <a href="member-achievements.php" class="btn-primary">See All Member Achievements</a>
     </div>
   </section>
   <?php endif; ?>
