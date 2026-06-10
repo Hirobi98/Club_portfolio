@@ -1,3 +1,28 @@
+<?php
+// Bootstrap: if accessed directly (not included from index.php), fetch DB data
+if (!isset($settings)) {
+    require_once 'db.php';
+    try {
+        $settings_raw = $pdo->query("SELECT * FROM homepage_settings")->fetchAll(PDO::FETCH_ASSOC);
+        $settings = [];
+        foreach ($settings_raw as $row) {
+            $settings[$row['setting_key']] = $row['setting_value'];
+        }
+    } catch (Exception $e) { $settings = []; }
+
+    try {
+        $db_events = $pdo->query("SELECT * FROM events ORDER BY created_at DESC")->fetchAll();
+    } catch (Exception $e) { $db_events = []; }
+
+    try {
+        $db_opportunities = $pdo->query("SELECT * FROM opportunities ORDER BY created_at DESC LIMIT 3")->fetchAll();
+    } catch (Exception $e) { $db_opportunities = []; }
+
+    try {
+        $db_achievements = $pdo->query("SELECT * FROM achievements ORDER BY display_order ASC, created_at DESC")->fetchAll();
+    } catch (Exception $e) { $db_achievements = []; }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,30 +98,7 @@
           </a>
         <?php endforeach; ?>
       <?php else: ?>
-        <a href="event-jobspecs.html" class="event-card glass reveal">
-          <img src="jobspecs-cover.png" alt="JobSpecs 2025" class="event-card-image">
-          <div class="event-card-body">
-            <span class="event-date">Jan 12-13, 2025</span>
-            <h3 class="text-gold">JobSpecs 2025</h3>
-            <p>KUET's first national job fair bringing top companies to campus for direct recruitment and networking.</p>
-          </div>
-        </a>
-        <a href="event-casespecs.html" class="event-card glass reveal">
-          <img src="casespecs-cover.png" alt="CaseSpecs 3.0" class="event-card-image">
-          <div class="event-card-body">
-            <span class="event-date">May 03, 2024</span>
-            <h3 class="text-gold">CaseSpecs 3.0</h3>
-            <p>An inter-university case competition designed to challenge students with real-world business problems.</p>
-          </div>
-        </a>
-        <a href="event-hultprize.html" class="event-card glass reveal">
-          <img src="hultprize-cover.png" alt="The Hult Prize" class="event-card-image">
-          <div class="event-card-body">
-            <span class="event-date">Feb 28, 2025</span>
-            <h3 class="text-gold">The Hult Prize</h3>
-            <p>KUET On Campus Round. Grooming sessions, mentorship workshops, and the Grand Finale for social entrepreneurship.</p>
-          </div>
-        </a>
+        <p class="reveal" style="text-align:center; color:var(--text-muted); grid-column: 1/-1;">No events added yet. Check back soon!</p>
       <?php endif; ?>
 
     </div>
@@ -124,41 +126,12 @@
           </a>
         <?php endforeach; ?>
       <?php else: ?>
-        <a href="opportunities.html#unilever" class="event-card glass reveal">
-          <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a3a2a 0%, #0d2218 100%); display:flex; align-items:center; justify-content:center; height:200px;">
-            <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;">UNILEVER<br>CAREER COLLAB</span>
-          </div>
-          <div class="event-card-body">
-            <span class="event-date">Workshop</span>
-            <h3 class="text-gold">Unilever Career Collaboration</h3>
-            <p>Hands-on insights into corporate career paths, FMCG industry dynamics, and essential professional skills.</p>
-          </div>
-        </a>
-        <a href="opportunities.html#needle" class="event-card glass reveal">
-          <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%); display:flex; align-items:center; justify-content:center; height:200px;">
-            <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;">NEEDLE<br>INNOVATION</span>
-          </div>
-          <div class="event-card-body">
-            <span class="event-date">Challenge</span>
-            <h3 class="text-gold">Needle Innovation Challenge</h3>
-            <p>An innovation-driven challenge pushing students to tackle real-world problems with creative solutions.</p>
-          </div>
-        </a>
-        <a href="opportunities.html#nestle" class="event-card glass reveal">
-          <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a0a0a 0%, #100505 100%); display:flex; align-items:center; justify-content:center; height:200px;">
-            <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;">NESTLÉ<br>COLLABORATION</span>
-          </div>
-          <div class="event-card-body">
-            <span class="event-date">Workshop</span>
-            <h3 class="text-gold">Nestlé Bangladesh Collaboration</h3>
-            <p>Inside look at supply chain management, brand strategy, and career opportunities at Nestlé Bangladesh.</p>
-          </div>
-        </a>
+        <p class="reveal" style="text-align:center; color:var(--text-muted); grid-column: 1/-1;">No opportunities added yet. Check back soon!</p>
       <?php endif; ?>
 
     </div>
     <div style="text-align: center; margin-top: 40px;" class="reveal">
-      <a href="opportunities.html" class="btn-primary">View All Opportunities</a>
+      <a href="opportunities.php" class="btn-primary">View All Opportunities</a>
     </div>
   </section>
 

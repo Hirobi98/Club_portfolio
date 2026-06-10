@@ -59,15 +59,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form action="login.php" method="POST" autocomplete="off" style="display: flex; flex-direction: column; gap: 18px; text-align: left;">
         <div>
           <label style="display: block; margin-bottom: 6px; color: var(--text-muted); font-size: 0.9rem;">Username</label>
-          <input type="text" name="username" autocomplete="off" required
+          <input type="text" name="username" autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');" required
                  style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; font-size: 1rem; outline: none; transition: border-color 0.3s;"
-                 onfocus="this.style.borderColor='var(--primary-gold)'" onblur="this.style.borderColor='var(--glass-border)'">
+                 onfocus="this.removeAttribute('readonly');this.style.borderColor='var(--primary-gold)'" onblur="this.style.borderColor='var(--glass-border)'">
         </div>
         <div>
           <label style="display: block; margin-bottom: 6px; color: var(--text-muted); font-size: 0.9rem;">Password</label>
-          <input type="password" name="password" autocomplete="off" required
+          <input type="password" name="password" autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');" required
                  style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; font-size: 1rem; outline: none; transition: border-color 0.3s;"
-                 onfocus="this.style.borderColor='var(--primary-gold)'" onblur="this.style.borderColor='var(--glass-border)'">
+                 onfocus="this.removeAttribute('readonly');this.style.borderColor='var(--primary-gold)'" onblur="this.style.borderColor='var(--glass-border)'">
         </div>
         <button type="submit" class="btn-primary" style="margin-top: 8px; width: 100%; cursor: pointer; font-size: 1rem; padding: 14px;">Login</button>
         <a href="first_page.php" class="btn-primary" style="background: transparent; border: 1px solid var(--glass-border); text-decoration: none; text-align: center; width: 100%; color: var(--text-muted); font-size: 0.9rem; padding: 12px;">← Back to Home</a>
