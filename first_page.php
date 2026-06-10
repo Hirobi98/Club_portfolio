@@ -21,6 +21,9 @@ if (!isset($settings)) {
     try {
         $db_achievements = $pdo->query("SELECT * FROM achievements ORDER BY display_order ASC, created_at DESC")->fetchAll();
     } catch (Exception $e) { $db_achievements = []; }
+    try {
+        $db_member_achievements = $pdo->query("SELECT * FROM member_achievements ORDER BY created_at DESC")->fetchAll();
+    } catch (Exception $e) { $db_member_achievements = []; }
 }
 ?>
 <!DOCTYPE html>
@@ -156,6 +159,31 @@ if (!isset($settings)) {
       <?php endif; ?>
     </div>
   </section>
+
+  <?php if (!empty($db_member_achievements)): ?>
+  <section id="member-achievements" class="section-padding" style="background-color: var(--bg-darker);">
+    <h2 class="section-title reveal">Member <span class="text-gold">Achievements</span></h2>
+    <div class="events-grid">
+      <?php foreach ($db_member_achievements as $ma): ?>
+        <div class="event-card glass reveal" style="cursor: default; transform: none; box-shadow: none;">
+          <?php if (!empty($ma['image'])): ?>
+            <img src="uploads/<?= htmlspecialchars($ma['image']); ?>" alt="<?= htmlspecialchars($ma['name']); ?>" class="event-card-image" style="height: 250px; transform: none; filter: none;">
+          <?php else: ?>
+            <div class="event-card-image opp-placeholder-img" style="background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%); display:flex; align-items:center; justify-content:center; height:250px;">
+              <span style="font-family:'Unbounded',sans-serif; color:var(--primary-gold); font-size:0.75rem; text-align:center; padding:0 20px; letter-spacing:2px; text-transform:uppercase;"><?= htmlspecialchars($ma['name']); ?></span>
+            </div>
+          <?php endif; ?>
+          <div class="event-card-body">
+            <h3 class="text-gold" style="margin-top: 0; margin-bottom: 5px; font-size: 1.4rem;"><?= htmlspecialchars($ma['name']); ?></h3>
+            <h4 style="color: #fff; margin-bottom: 15px; font-size: 1.1rem; font-family: 'Inter', sans-serif; font-weight: 500;"><?= htmlspecialchars($ma['title']); ?></h4>
+            <p style="font-size: 0.95rem;"><?= nl2br(htmlspecialchars($ma['description'])); ?></p>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </section>
+  <?php endif; ?>
+
 
   <footer>
     <h2 class="brand-logo" style="justify-content: center; margin-bottom: 15px;">

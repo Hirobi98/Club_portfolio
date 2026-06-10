@@ -35,6 +35,14 @@ try {
 } catch (Exception $e) {
     $db_achievements = [];
 }
+// Fetch member achievements
+try {
+    $stmtMem = $pdo->query("SELECT * FROM member_achievements ORDER BY created_at DESC");
+    $db_member_achievements = $stmtMem->fetchAll();
+} catch (Exception $e) {
+    $db_member_achievements = [];
+}
+
 // Flag: this is the admin preview (accessed via dashboard "View Website")
 $is_admin_preview = true;
 

@@ -68,6 +68,20 @@ if (isset($_GET['delete_achievement'])) {
     exit;
 }
 
+if (isset($_GET['delete_member_achievement'])) {
+    $id = (int)$_GET['delete_member_achievement'];
+    $stmt = $pdo->prepare("SELECT image FROM member_achievements WHERE id = ?");
+    $stmt->execute([$id]);
+    $row = $stmt->fetch();
+    if ($row && !empty($row['image']) && file_exists('uploads/' . $row['image'])) {
+        unlink('uploads/' . $row['image']);
+    }
+    $stmt = $pdo->prepare("DELETE FROM member_achievements WHERE id = ?");
+    $stmt->execute([$id]);
+    header('Location: dashboard.php?msg=' . urlencode('Member achievement deleted.'));
+    exit;
+}
+
 // Fetch all content
 $events = $pdo->query("SELECT * FROM events ORDER BY created_at DESC")->fetchAll();
 $opportunities = $pdo->query("SELECT * FROM opportunities ORDER BY created_at DESC")->fetchAll();
@@ -76,6 +90,12 @@ try {
     $achievements = $pdo->query("SELECT * FROM achievements ORDER BY display_order ASC, created_at DESC")->fetchAll();
 } catch (Exception $e) {
     $achievements = [];
+}
+
+try {
+    $member_achievements = $pdo->query("SELECT * FROM member_achievements ORDER BY created_at DESC")->fetchAll();
+} catch (Exception $e) {
+    $member_achievements = [];
 }
 
 $settings_raw = $pdo->query("SELECT * FROM homepage_settings")->fetchAll(PDO::FETCH_ASSOC);
@@ -251,6 +271,42 @@ foreach ($settings_raw as $row) {
                         <td>
                             <a href="manage-achievement.php?id=<?= $a['id']; ?>" class="action-btn btn-edit">Edit</a>
                             <a href="dashboard.php?delete_achievement=<?= $a['id']; ?>" class="action-btn btn-delete" onclick="return confirm('Delete this achievement?')">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <?php endif; ?>
+        </div>
+
+        <!-- MEMBER ACHIEVEMENTS -->
+        <div class="table-section">
+            <div class="hdr-flex">
+                <h2>Manage <span class="text-gold">Member Achievements</span></h2>
+                <a href="manage-member-achievement.php" class="btn-primary" style="padding:8px 16px;font-size:0.9rem;">+ Add Member Achievement</a>
+            </div>
+            <?php if (empty($member_achievements)): ?>
+                <p class="empty-state">No member achievements yet. Add your first one above.</p>
+            <?php else: ?>
+            <table>
+                <thead>
+                    <tr><th>Image</th><th>Name</th><th>Title</th><th>Actions</th></tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($member_achievements as $ma): ?>
+                    <tr>
+                        <td>
+                            <?php if (!empty($ma['image'])): ?>
+                                <img src="uploads/<?= htmlspecialchars($ma['image']); ?>" style="width:60px;height:40px;object-fit:cover;border-radius:6px;">
+                            <?php else: ?>
+                                <span style="color:var(--text-muted);font-size:0.8rem;">No image</span>
+                            <?php endif; ?>
+                        </td>
+                        <td><?= htmlspecialchars($ma['name']); ?></td>
+                        <td><?= htmlspecialchars($ma['title']); ?></td>
+                        <td>
+                            <a href="manage-member-achievement.php?id=<?= $ma['id']; ?>" class="action-btn btn-edit">Edit</a>
+                            <a href="dashboard.php?delete_member_achievement=<?= $ma['id']; ?>" class="action-btn btn-delete" onclick="return confirm('Delete this member achievement?')">Delete</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
