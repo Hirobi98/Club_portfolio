@@ -35,6 +35,8 @@ try {
 } catch (Exception $e) {
     $db_achievements = [];
 }
+// Flag: this is the admin preview (accessed via dashboard "View Website")
+$is_admin_preview = true;
 
 // Include the main homepage template
 include 'first_page.php';

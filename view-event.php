@@ -27,6 +27,9 @@ if (!$event) { header('Location: index.php'); exit; }
     </style>
 </head>
 <body>
+    <!-- Blur overlay for better readability -->
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 8, 15, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: -1;"></div>
+
     <nav class="navbar-container glass">
         <a href="index.php" class="brand-logo">
             <img src="spectrum-logo.jpg" alt="Spectrum Logo" style="width:40px;height:40px;object-fit:contain;border-radius:50%;">

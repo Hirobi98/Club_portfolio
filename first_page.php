@@ -44,7 +44,6 @@ if (!isset($settings)) {
       <li><a href="#events">Events</a></li>
       <li><a href="#opportunities">Opportunities</a></li>
       <li><a href="#achievements">Achievements</a></li>
-      <li><a href="login.php">Admin Login</a></li>
     </ul>
   </nav>
 
@@ -168,6 +167,10 @@ if (!isset($settings)) {
     </div>
     <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 20px;">&copy; 2025 Spectrum KUET. All rights reserved.</p>
   </footer>
+
+  <?php if (!empty($is_admin_preview)): ?>
+    <a href="dashboard.php" style="position:fixed; bottom:30px; right:30px; background:var(--primary-gold); color:var(--bg-darker); padding:12px 24px; border-radius:30px; font-weight:bold; z-index:9999; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-decoration:none; font-family:'Inter',sans-serif;">← Back to Dashboard</a>
+  <?php endif; ?>
 
   <script src="script.js"></script>
 </body>
