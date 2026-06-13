@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'db.php';
 
 // Fetch ALL member achievements from database (no limit)
@@ -111,7 +114,7 @@ try {
     </div>
 
     <div style="text-align: center; margin-top: 50px;">
-      <a href="first_page.php#member-achievements" class="back-link">Back to Home</a>
+      <a href="<?= isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] ? 'index.php' : 'first_page.php'; ?>#member-achievements" class="back-link">Back to Home</a>
     </div>
   </section>
 
